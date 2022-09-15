@@ -1,0 +1,12 @@
+@import "../../setting.scss";
+
+// Variable
+
+// scss
+.navbar-board {
+    padding-left: $padding-10;
+    display: flex;
+    align-items: center;
+    background-color: $board-bg-color;
+    font-size: 1.1rem;
+}
