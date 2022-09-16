@@ -5,6 +5,7 @@
 // scss
 .navbar-board {
     padding-left: $padding-10;
+    height: $navbar-board-height;
     display: flex;
     align-items: center;
     background-color: $board-bg-color;
