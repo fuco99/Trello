@@ -6,6 +6,7 @@ $padding-10: 10px;
 // scss
 .navbar-app {
     padding-left: $padding-10;
+    height: $navbar-app-height;
     display: flex;
     align-items: center;
     background-color: $appbar-bg-color;

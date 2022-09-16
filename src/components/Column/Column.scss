@@ -1,13 +1,10 @@
 @import "../../setting";
-
+$column-height: calc(#{$board-content-height} - #{$padding-10 * 2});
 .column {
     flex: 0 0 auto;
     width: 300px;
-    height: calc(100% - ($padding-10));
-    &:not(:first-child) {
-        margin-left: $margin-10;
-    }
-
+    height: $column-height;
+    margin-left: $margin-10;
     > * {
         background-color: $list-bg-color;
         color: #333;
@@ -29,10 +26,9 @@
         border-bottom-left-radius: $column-border-radius;
         border-bottom-right-radius: $column-border-radius;
     }
-    ul.card-list {
-        list-style: none;
+    .card-list {
         margin: 0;
-        max-height: calc(100% - #{$column-header-height} - #{$column-footer-height});
+        max-height: calc(#{$column-height} - #{$column-header-height} - #{$column-footer-height});
         overflow-y: auto;
         &::-webkit-scrollbar {
             -webkit-appearance: none;
@@ -43,6 +39,20 @@
         &::-webkit-scrollbar-thumb {
             background-color: darken($list-bg-color, 15);
             border-right: 5px solid $list-bg-color;
+        }
+        .card-ghost {
+            transition: transform 0.18s ease;
+            transform: rotateZ(5deg);
+        }
+
+        .card-ghost-drop {
+            transition: transform 0.18s ease-in-out;
+            transform: rotateZ(0deg);
+        }
+        .cards-drop-preview {
+            background-color: rgba(150, 150, 200, 0.1);
+            border: 1px dashed #abc;
+            margin: 5px;
         }
     }
 }

@@ -1,6 +1,7 @@
 @import "../../setting";
 
-li.card-item {
+.card-item {
+    list-style: none;
     background-color: white;
     padding: $padding-10;
     border-radius: $card-border-radius;
