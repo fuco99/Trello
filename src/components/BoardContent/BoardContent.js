@@ -4,6 +4,7 @@ import Column from "../Column/Column";
 import { isEmpty } from "lodash";
 import { initialData } from "actions/initialData";
 import { mapOrder } from "ultilities/Sorts";
+import { applyDrag } from "ultilities/dragDrop";
 import "./BoardContent.scss";
 function BoardContent() {
   const [board, setBoard] = useState({});
@@ -26,10 +27,25 @@ function BoardContent() {
     );
   }
   const onColumnDrop = (dropResult) => {
-    console.log(dropResult);
+    let newColumns = [...columns];
+    newColumns = applyDrag(newColumns, dropResult);
+    let newBoard = { ...board };
+    newBoard.columnOrder = newColumns.map((column) => column.id);
+    newBoard.columns = newColumns;
+    setBoard(newBoard);
+    setColumns(newColumns);
+  };
+  const onCardDrop = (columnId, dropResult) => {
+    if (dropResult.removedIndex !== null || dropResult.addedIndex !== null) {
+      let newColumns = [...columns];
+      let currentColumn = newColumns.find((c) => c.id === columnId);
+      currentColumn.cards = applyDrag(currentColumn.cards, dropResult);
+      currentColumn.cardOrder = currentColumn.cards.map((item) => item.id);
+      setColumns(newColumns);
+    }
   };
   return (
-    <div className="board-content">
+    <div className="board-content" style={{ display: "flex" }}>
       <Container
         orientation="horizontal"
         onDrop={onColumnDrop}
@@ -45,10 +61,14 @@ function BoardContent() {
       >
         {columns.map((column, index) => (
           <Draggable key={index}>
-            <Column column={column} />
+            <Column column={column} onCardDrop={onCardDrop} />
           </Draggable>
         ))}
       </Container>
+      <div className="add-new-column">
+        <i className="fa fa-plus" style={{ paddingRight: "3px" }} />
+        Add another list
+      </div>
     </div>
   );
 }
