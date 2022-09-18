@@ -6,7 +6,7 @@ $column-height: calc(#{$board-content-height} - #{$padding-10 * 2});
     height: $column-height;
     margin-left: $margin-10;
     > * {
-        background-color: $list-bg-color;
+        background-color: $column-bg-color;
         padding: 0 8px;
     }
     header {
@@ -43,8 +43,8 @@ $column-height: calc(#{$board-content-height} - #{$padding-10 * 2});
             width: 11px;
         }
         &::-webkit-scrollbar-thumb {
-            background-color: darken($list-bg-color, 15);
-            border-right: 5px solid $list-bg-color;
+            background-color: darken($column-bg-color, 15);
+            border-right: 5px solid $column-bg-color;
         }
         .card-ghost {
             transition: transform 0.18s ease;
