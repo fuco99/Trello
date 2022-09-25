@@ -108,6 +108,7 @@ function BoardContent() {
     setColumns(newColumns);
     setBoard(newBoard);
   };
+
   return (
     <div className="board-content" style={{ display: "flex" }}>
       <Container
@@ -157,7 +158,7 @@ function BoardContent() {
             <Button variant="success" size="sm" onClick={addNewColumn}>
               Add column
             </Button>
-            <span className="cancel-new-column" onClick={toggleNewColumn}>
+            <span className="cancel-icon" onClick={toggleNewColumn}>
               <i className="fa fa-trash icon" />
             </span>
           </Col>
